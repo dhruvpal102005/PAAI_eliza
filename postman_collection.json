@@ -1,0 +1,249 @@
+{
+  "info": {
+    "name": "BlockAI Platform API",
+    "description": "API collection for testing the BlockAI multi-agent platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "taskId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/health",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List Available Agents",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/agents",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "agents"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Validate Transaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"transactionHash\": \"0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/validate",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "validate"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Submit Research Task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 202) {",
+              "    const jsonData = pm.response.json();",
+              "    pm.collectionVariables.set('taskId', jsonData.taskId);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"task\": \"Research the latest developments in quantum computing and create a comprehensive summary\",\n  \"walletAddress\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb\",\n  \"transactionHash\": \"0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/task",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "task"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Submit Coding Task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 202) {",
+              "    const jsonData = pm.response.json();",
+              "    pm.collectionVariables.set('taskId', jsonData.taskId);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"task\": \"Create a REST API endpoint for user authentication with JWT tokens\",\n  \"walletAddress\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb\",\n  \"transactionHash\": \"0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/task",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "task"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Submit Blockchain Task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 202) {",
+              "    const jsonData = pm.response.json();",
+              "    pm.collectionVariables.set('taskId', jsonData.taskId);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"task\": \"Check the ETH balance of address 0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb on Sepolia\",\n  \"walletAddress\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb\",\n  \"transactionHash\": \"0xfedcba0987654321fedcba0987654321fedcba0987654321fedcba0987654321\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/task",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "task"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Submit Data Analysis Task",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "if (pm.response.code === 202) {",
+              "    const jsonData = pm.response.json();",
+              "    pm.collectionVariables.set('taskId', jsonData.taskId);",
+              "}"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"task\": \"Analyze sales data trends and create visualizations for Q4 2024\",\n  \"walletAddress\": \"0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb\",\n  \"transactionHash\": \"0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/task",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "task"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Task Status",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/task/{{taskId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "task", "{{taskId}}"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "List All Tasks",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/api/tasks?limit=10&offset=0",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "tasks"],
+          "query": [
+            {
+              "key": "limit",
+              "value": "10"
+            },
+            {
+              "key": "offset",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
