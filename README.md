@@ -47,7 +47,7 @@ A sophisticated AI platform that combines **multi-agent orchestration**, **Web3 
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/dhruvpal102005/PAAI_eliza.git
    cd blockai-platform
    ```
 
